@@ -22,7 +22,7 @@ void pilot_run(event_t event) {
     globalData.cToolRunning = 1;
   }
 
-  if (event == EVT_KEY_LONG(KEY_EXIT)) { // exit on LONG press CANCEL
+  if (event == EVT_KEY_FIRST(KEY_EXIT) || event == EVT_KEY_FIRST(KEY_ENTER)) {
     pilot_stop();
   }
 
