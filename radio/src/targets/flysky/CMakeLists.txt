@@ -1,6 +1,7 @@
 option(SHUTDOWN_CONFIRMATION "Shutdown confirmation" OFF)
 option(PCBI6X_ELRSV3 "Enable ExpressLRS v3 configuration tool" NO) # ~4kB
 option(PCBI6X_HELLO "Enable Hello World example tool" NO)
+option(PCBI6X_PILOT "Enable Pilot tool" NO)
 option(PCBI6X_USB_VBUS "Remove manual USB connection, just auto using VBUS, requires wiring USB VBUS to PA15 pad" NO)
 option(PCBI6X_BACKLIGHT_MOD "Enable adjustable backlight, requires wiring BL pad to PC9 pad" NO)
 option(AFHDS2A_LQI_CH "Send RSSI at channel 1-17" 17)
@@ -67,6 +68,14 @@ if(PCBI6X_HELLO STREQUAL YES)
 set(TARGET_SRC
   ${TARGET_SRC}
   tools/hello.cpp
+  )
+endif()
+
+if(PCBI6X_PILOT STREQUAL YES)
+  add_definitions(-DPCBI6X_PILOT)
+set(TARGET_SRC
+  ${TARGET_SRC}
+  tools/pilot.cpp
   )
 endif()
 
